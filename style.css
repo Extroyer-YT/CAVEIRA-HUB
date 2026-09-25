@@ -2193,23 +2193,101 @@ body {
     flex-shrink: 0;
   }
 
-  /* Horizontal swipeable chip carousel on mobile com fade tático */
+  /* === FILTROS RESPONSIVOS MOBILE (WRAP & LARGURA CONFORTÁVEL) === */
+  .control-deck {
+    padding: 1rem 16px;
+    gap: 0.95rem;
+    border-radius: 4px;
+    background: rgba(8, 4, 6, 0.92);
+  }
+
+  .deck-top-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .search-box-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .search-box-wrapper input {
+    height: 44px;
+    font-size: 0.84rem;
+    padding: 0.65rem 2.2rem 0.65rem 2.6rem;
+    text-overflow: ellipsis;
+  }
+
+  .deck-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+  }
+
+  .select-group {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .select-group label {
+    display: none;
+  }
+
+  .hud-select {
+    width: 100%;
+    height: 42px;
+    font-size: 0.82rem;
+    padding: 0.4rem 0.65rem;
+    border-radius: 3px;
+  }
+
+  .view-switchers {
+    display: flex;
+    flex-shrink: 0;
+    height: 42px;
+    border: 1px solid var(--border-tactical);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .view-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hud-icon-btn {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  /* Container pai dos filtros com padding lateral para não encostar nas bordas */
   .deck-filters {
-    padding-top: 0.75rem;
-    gap: 0.8rem;
+    padding: 0.85rem 0 0.25rem 0;
+    gap: 1rem;
     border-top: 1px solid rgba(255, 0, 60, 0.18);
+    width: 100%;
   }
 
   .filter-group {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
+    gap: 0.5rem;
     width: 100%;
   }
 
   .filter-heading {
     min-width: unset;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-family: var(--font-mono);
     color: var(--accent-neon);
     letter-spacing: 1.5px;
@@ -2223,70 +2301,70 @@ body {
   .filter-heading::before {
     content: '▸';
     color: var(--accent-bright);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
-  /* Todas as opções de status e categoria aparecem na tela (sem scroll, sem corte) */
+  /* Quebra de Linha (Wrap): display: flex com flex-wrap: wrap sem cortes e sem overflow hidden */
   .chips-container {
     width: 100%;
-    overflow-x: visible;
-    flex-wrap: wrap;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 0;
-    gap: 0.4rem;
-    display: flex;
-    align-items: center;
-    mask-image: none;
-    -webkit-mask-image: none;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.45rem !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    padding: 0 !important;
   }
 
-  /* Grid 2x2 para os 4 botões de status ficarem 100% visíveis, simétricos e organizados */
+  /* Botões com largura confortável (ex: 48% / 2 por linha) usando flex: 1 1 calc(50% - 0.45rem) */
   #statusChips {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.45rem;
-    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
   }
 
   #statusChips .filter-chip {
-    width: 100%;
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 130px;
     justify-content: center;
     text-align: center;
-    padding: 0.45rem 0.5rem;
+    padding: 0.5rem 0.6rem;
     font-size: 0.78rem;
-    min-height: 38px;
-    white-space: nowrap;
+    min-height: 40px;
+    white-space: normal !important;
+    box-sizing: border-box;
   }
 
-  /* Todas as categorias dispostas com wrap completo na tela */
+  /* Categorias com quebra de linha fluida, pulando para linha de baixo sem cortar */
   #categoryChips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.45rem !important;
+    width: 100% !important;
   }
 
   #categoryChips .filter-chip {
     flex: 1 1 auto;
+    min-width: 95px;
     justify-content: center;
     text-align: center;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.74rem;
-    min-height: 34px;
-    white-space: nowrap;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.75rem;
+    min-height: 36px;
+    white-space: normal !important;
+    box-sizing: border-box;
   }
 
   .filter-chip {
-    flex-shrink: 0;
-    white-space: nowrap;
-    border-radius: 3px;
+    border-radius: 4px;
     touch-action: manipulation;
   }
 
   /* Crossbones SVG */
   .svg-divider {
-    padding: 0.4rem 0;
+    padding: 0.5rem 0;
     overflow: hidden;
   }
 
@@ -2336,115 +2414,122 @@ body {
     justify-content: center;
   }
 
-  /* === ARSENAL DE SISTEMAS HUD BAR === */
-  /* Caixa com somente marcados de lado do título, frase exibindo 1 de 1 em baixo do título */
+  /* === TÍTULO E CHECKBOX "SOMENTE MARCADOS" EMPILHADOS E CENTRALIZADOS === */
   .section-hud-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.6rem;
-    padding: 0.85rem 0.85rem;
-    background: rgba(14, 6, 10, 0.88);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.85rem !important;
+    padding: 1.15rem 16px !important;
+    background: rgba(14, 6, 10, 0.9);
     border: 1px solid var(--border-tactical);
-    border-left: 3.5px solid var(--accent-neon);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-    border-radius: 3px;
+    border-top: 3px solid var(--accent-neon);
+    border-left: 1px solid var(--border-tactical);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .section-title-column {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    flex: 1;
-    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+    width: 100%;
   }
 
   .section-title-header {
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    min-width: 0;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .section-skull-icon {
-    width: 20px;
-    height: 24px;
+    width: 22px;
+    height: 26px;
     flex-shrink: 0;
   }
 
   .section-title-wrap {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    min-width: 0;
+    justify-content: center;
+    gap: 0.35rem;
   }
 
   .hud-bracket {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--accent-neon);
-    flex-shrink: 0;
   }
 
   .section-title {
-    font-size: clamp(0.78rem, 3.5vw, 1.1rem);
-    letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: clamp(0.95rem, 4.3vw, 1.25rem);
+    letter-spacing: clamp(1px, 0.3vw, 2px);
+    text-align: center;
     color: #fff;
+    white-space: normal;
   }
 
-  /* Frase exibindo 1 de 1 diretamente em baixo do título */
+  /* Frase exibindo 1 de 1 diretamente em baixo do título e centralizada */
   .section-title-column .results-badge {
-    font-size: 0.7rem;
-    padding: 2.5px 8px;
-    white-space: nowrap;
-    align-self: flex-start;
-    margin-left: calc(20px + 0.45rem);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    align-self: center;
+    margin: 0 auto;
     letter-spacing: 0.5px;
     background: rgba(255, 0, 60, 0.1);
     border: 1px solid var(--border-tactical);
     border-radius: 2px;
     color: var(--accent-bright);
-    margin-top: 0.1rem;
+    display: inline-block;
   }
 
-  /* Caixa com o texto somente marcados de lado do título */
+  /* Checkbox Somente Marcados empilhado e centralizado */
   .quick-pinned-toggle {
     display: flex;
     align-items: center;
-    flex-shrink: 0;
-    padding-top: 3px;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0.55rem;
+    border-top: 1px dashed rgba(255, 0, 60, 0.25);
   }
 
   .toggle-checkbox-label {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    justify-content: center;
+    gap: 0.55rem;
     cursor: pointer;
   }
 
   .custom-toggle {
-    width: 32px;
-    height: 18px;
+    width: 36px;
+    height: 20px;
   }
 
   .custom-toggle::after {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     top: 2.5px;
     left: 2px;
   }
 
   .toggle-checkbox-label input[type="checkbox"]:checked + .custom-toggle::after {
-    transform: translateX(14px);
+    transform: translateX(16px);
   }
 
   .label-text {
-    font-size: 0.74rem;
+    font-size: 0.8rem;
     white-space: nowrap;
+    letter-spacing: 0.4px;
   }
 
   /* Modal Dialog */
@@ -2621,54 +2706,50 @@ body {
     min-height: 34px;
   }
 
-  /* Arsenal bar em telas compactas */
+  /* Arsenal bar em telas compactas (empilhado e centralizado) */
   .section-hud-bar {
-    padding: 0.65rem 0.65rem;
-    gap: 0.45rem;
+    padding: 0.95rem 12px !important;
+    gap: 0.75rem !important;
   }
 
   .section-skull-icon {
-    width: 17px;
-    height: 20px;
+    width: 18px;
+    height: 22px;
   }
 
   .section-title {
-    font-size: 0.8rem;
-    letter-spacing: 0.6px;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
   }
 
   .hud-bracket {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   .section-title-column .results-badge {
-    font-size: 0.64rem;
-    padding: 2px 6px;
-    margin-left: calc(17px + 0.35rem);
-  }
-
-  .quick-pinned-toggle {
-    padding-top: 1px;
+    font-size: 0.68rem;
+    padding: 2.5px 8px;
+    margin: 0 auto;
   }
 
   .label-text {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
   }
 
   .custom-toggle {
-    width: 28px;
-    height: 16px;
+    width: 32px;
+    height: 18px;
   }
 
   .custom-toggle::after {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     top: 2.5px;
     left: 2px;
   }
 
   .toggle-checkbox-label input[type="checkbox"]:checked + .custom-toggle::after {
-    transform: translateX(12px);
+    transform: translateX(14px);
   }
 }
 
