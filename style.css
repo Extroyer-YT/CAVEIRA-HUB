@@ -1002,6 +1002,9 @@ body {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  padding: 12px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 4px;
 }
 
 .toggle-checkbox-label {
@@ -2269,7 +2272,7 @@ body {
     flex-shrink: 0;
   }
 
-  /* Container pai dos filtros com padding lateral para não encostar nas bordas */
+  /* 1. Para o container dos filtros (Status e Categoria) */
   .deck-filters {
     padding: 0.85rem 0 0.25rem 0;
     gap: 1rem;
@@ -2280,7 +2283,7 @@ body {
   .filter-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
     width: 100%;
   }
@@ -2296,6 +2299,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.35rem;
+    align-self: center;
   }
 
   .filter-heading::before {
@@ -2304,61 +2308,38 @@ body {
     font-size: 0.8rem;
   }
 
-  /* Quebra de Linha (Wrap): display: flex com flex-wrap: wrap sem cortes e sem overflow hidden */
-  .chips-container {
-    width: 100%;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.45rem !important;
-    overflow: visible !important;
-    overflow-x: visible !important;
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
-    padding: 0 !important;
-  }
-
-  /* Botões com largura confortável (ex: 48% / 2 por linha) usando flex: 1 1 calc(50% - 0.45rem) */
-  #statusChips {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-
-  #statusChips .filter-chip {
-    flex: 1 1 calc(50% - 0.5rem);
-    min-width: 130px;
-    justify-content: center;
-    text-align: center;
-    padding: 0.5rem 0.6rem;
-    font-size: 0.78rem;
-    min-height: 40px;
-    white-space: normal !important;
-    box-sizing: border-box;
-  }
-
-  /* Categorias com quebra de linha fluida, pulando para linha de baixo sem cortar */
+  /* Containers dos filtros com wrap, centralizados, gap 8px e sem overflow ou nowrap */
+  .chips-container,
+  #statusChips,
   #categoryChips {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 0.45rem !important;
-    width: 100% !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    white-space: normal !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    padding: 0 !important;
+    width: 100%;
   }
 
-  #categoryChips .filter-chip {
-    flex: 1 1 auto;
-    min-width: 95px;
+  /* No celular, botões com width: auto e min-width: 100px */
+  .chips-container .filter-chip,
+  #statusChips .filter-chip,
+  #categoryChips .filter-chip,
+  .filter-chip {
+    width: auto !important;
+    min-width: 100px !important;
+    white-space: normal !important;
     justify-content: center;
     text-align: center;
     padding: 0.45rem 0.75rem;
-    font-size: 0.75rem;
-    min-height: 36px;
-    white-space: normal !important;
-    box-sizing: border-box;
-  }
-
-  .filter-chip {
+    font-size: 0.76rem;
+    min-height: 38px;
     border-radius: 4px;
+    box-sizing: border-box;
     touch-action: manipulation;
   }
 
@@ -2414,19 +2395,18 @@ body {
     justify-content: center;
   }
 
-  /* === TÍTULO E CHECKBOX "SOMENTE MARCADOS" EMPILHADOS E CENTRALIZADOS === */
+  /* 2. Para o título 'Arsenal de Sistemas' e o checkbox 'Somente Marcados' (Empilhados e Centralizados) */
   .section-hud-bar {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    gap: 0.85rem !important;
+    gap: 12px !important;
     padding: 1.15rem 16px !important;
     background: rgba(14, 6, 10, 0.9);
     border: 1px solid var(--border-tactical);
     border-top: 3px solid var(--accent-neon);
-    border-left: 1px solid var(--border-tactical);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
     border-radius: 4px;
     width: 100%;
@@ -2492,14 +2472,16 @@ body {
     display: inline-block;
   }
 
-  /* Checkbox Somente Marcados empilhado e centralizado */
+  /* Checkbox Somente Marcados: padding: 12px e border: 1px solid rgba(255,0,0,0.3) */
   .quick-pinned-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-top: 0.55rem;
-    border-top: 1px dashed rgba(255, 0, 60, 0.25);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    padding: 12px !important;
+    border: 1px solid rgba(255, 0, 0, 0.3) !important;
+    border-radius: 4px !important;
+    background: rgba(255, 0, 60, 0.05);
   }
 
   .toggle-checkbox-label {
@@ -2700,11 +2682,6 @@ body {
     height: 38px;
   }
 
-  .filter-chip {
-    padding: 0.35rem 0.7rem;
-    font-size: 0.72rem;
-    min-height: 34px;
-  }
 
   /* Arsenal bar em telas compactas (empilhado e centralizado) */
   .section-hud-bar {
