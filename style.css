@@ -2122,6 +2122,8 @@ body {
     gap: 0.95rem;
     border-radius: 4px;
     background: rgba(8, 4, 6, 0.92);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .deck-top-row {
@@ -2202,6 +2204,7 @@ body {
     padding: 0.85rem 0 0.25rem 0;
     border-top: 1px solid rgba(255, 0, 60, 0.18);
     width: 100%;
+    box-sizing: border-box;
     overflow: visible;
   }
 
@@ -2211,6 +2214,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     width: 100%;
+    box-sizing: border-box;
     overflow: visible;
   }
 
@@ -2232,30 +2236,34 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     overflow: visible;
     mask-image: none;
     -webkit-mask-image: none;
     width: 100%;
+    max-width: 100%;
     padding: 0;
     white-space: normal;
+    box-sizing: border-box;
   }
 
-  /* Botões dos chips: largura confortável */
+  /* Botões dos chips: nunca excedem 50% da largura */
   .filter-chip {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 90px;
-    max-width: calc(50% - 4px);
+    flex: 0 1 auto;
+    min-width: 80px;
+    max-width: calc(50% - 3px);
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     justify-content: center;
     text-align: center;
-    padding: 0.45rem 0.75rem;
-    font-size: 0.76rem;
-    min-height: 38px;
+    padding: 0.45rem 0.6rem;
+    font-size: 0.74rem;
+    min-height: 36px;
     border-radius: 4px;
     box-sizing: border-box;
     touch-action: manipulation;
+    clip-path: none;
   }
 
   /* ─── SVG Divider ─── */
@@ -2644,318 +2652,9 @@ body {
     flex-shrink: 0;
   }
 
-  /* 1. Para o container dos filtros (Status e Categoria) */
-  .deck-filters {
-    padding: 0.85rem 0 0.25rem 0;
-    gap: 1rem;
-    border-top: 1px solid rgba(255, 0, 60, 0.18);
-    width: 100%;
-  }
-
-  .filter-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .filter-heading {
-    min-width: unset;
-    font-size: 0.72rem;
-    font-family: var(--font-mono);
-    color: var(--accent-neon);
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    text-shadow: 0 0 6px var(--accent-glow);
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    align-self: center;
-  }
-
-  .filter-heading::before {
-    content: '▸';
-    color: var(--accent-bright);
-    font-size: 0.8rem;
-  }
-
-  /* Containers dos filtros com wrap, centralizados, gap 8px e sem overflow ou nowrap */
-  .chips-container,
-  #statusChips,
-  #categoryChips {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    overflow: visible !important;
-    overflow-x: visible !important;
-    white-space: normal !important;
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
-    padding: 0 !important;
-    width: 100%;
-  }
-
-  /* No celular, botões com width: auto e min-width: 100px */
-  .chips-container .filter-chip,
-  #statusChips .filter-chip,
-  #categoryChips .filter-chip,
-  .filter-chip {
-    width: auto !important;
-    min-width: 100px !important;
-    white-space: normal !important;
-    justify-content: center;
-    text-align: center;
-    padding: 0.45rem 0.75rem;
-    font-size: 0.76rem;
-    min-height: 38px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    touch-action: manipulation;
-  }
-
-  /* Crossbones SVG */
-  .svg-divider {
-    padding: 0.5rem 0;
-    overflow: hidden;
-  }
-
-  .crossbones-divider {
-    height: clamp(34px, 8vw, 44px);
-    max-width: 100%;
-  }
-
-  /* Projects Grid */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .project-card {
-    width: 100%;
-  }
-
-  .card-screenshot-wrap {
-    height: 140px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .card-footer {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.6rem;
-  }
-
-  .card-links-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .card-footer .btn-tactical-link {
-    width: 100%;
-    min-height: 42px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* 2. Para o título 'Arsenal de Sistemas' e o checkbox 'Somente Marcados' (Empilhados e Centralizados) */
-  .section-hud-bar {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 12px !important;
-    padding: 1.15rem 16px !important;
-    background: rgba(14, 6, 10, 0.9);
-    border: 1px solid var(--border-tactical);
-    border-top: 3px solid var(--accent-neon);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .section-title-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .section-title-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .section-skull-icon {
-    width: 22px;
-    height: 26px;
-    flex-shrink: 0;
-  }
-
-  .section-title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-  }
-
-  .hud-bracket {
-    font-size: 1.2rem;
-    color: var(--accent-neon);
-  }
-
-  .section-title {
-    font-size: clamp(0.95rem, 4.3vw, 1.25rem);
-    letter-spacing: clamp(1px, 0.3vw, 2px);
-    text-align: center;
-    color: #fff;
-    white-space: normal;
-  }
-
-  /* Frase exibindo 1 de 1 diretamente em baixo do título e centralizada */
-  .section-title-column .results-badge {
-    font-size: 0.72rem;
-    padding: 3px 10px;
-    align-self: center;
-    margin: 0 auto;
-    letter-spacing: 0.5px;
-    background: rgba(255, 0, 60, 0.1);
-    border: 1px solid var(--border-tactical);
-    border-radius: 2px;
-    color: var(--accent-bright);
-    display: inline-block;
-  }
-
-  /* Checkbox Somente Marcados: padding: 12px e border: 1px solid rgba(255,0,0,0.3) */
-  .quick-pinned-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: auto !important;
-    padding: 12px !important;
-    border: 1px solid rgba(255, 0, 0, 0.3) !important;
-    border-radius: 4px !important;
-    background: rgba(255, 0, 60, 0.05);
-  }
-
-  .toggle-checkbox-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    cursor: pointer;
-  }
-
-  .custom-toggle {
-    width: 36px;
-    height: 20px;
-  }
-
-  .custom-toggle::after {
-    width: 12px;
-    height: 12px;
-    top: 2.5px;
-    left: 2px;
-  }
-
-  .toggle-checkbox-label input[type="checkbox"]:checked + .custom-toggle::after {
-    transform: translateX(16px);
-  }
-
-  .label-text {
-    font-size: 0.8rem;
-    white-space: nowrap;
-    letter-spacing: 0.4px;
-  }
-
-  /* Modal Dialog */
-  .hud-modal-overlay {
-    padding: 0.75rem;
-  }
-
-  .hud-modal-panel {
-    max-height: 90vh;
-    border-radius: 4px;
-  }
-
-  .modal-header {
-    padding: 1rem;
-  }
-
-  .modal-title {
-    font-size: 1.05rem;
-    letter-spacing: 1px;
-  }
-
-  .details-content {
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .detail-meta-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .detail-actions-row {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .detail-actions-row .btn-tactical-link {
-    width: 100%;
-    min-height: 44px;
-    justify-content: center;
-  }
-
-  /* Footer */
-  .hud-footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    padding: 1.25rem 0.5rem;
-  }
-
-  .hud-footer .footer-left {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-  }
-
-  .footer-links {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .dock-link {
-    min-height: 40px;
-    padding: 0.5rem 1.2rem;
-  }
-
-  .view-list-mode .project-card {
-    flex-direction: column;
-    align-items: stretch;
-  }
 }
+
+
 
 /* ── Compact Phones Breakpoint (<= 420px) ── */
 @media (max-width: 420px) {
