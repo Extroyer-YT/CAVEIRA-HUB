@@ -207,7 +207,7 @@
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="searchInput" placeholder="Localizar projeto por título, codinome, tag ou stack... [ / ]" autocomplete="off" spellcheck="false">
+          <input type="text" id="searchInput" placeholder="Buscar por título, codinome, tag ou stack... [ / ]" autocomplete="off" spellcheck="false">
           <button id="btnClearSearch" class="btn-clear hidden" title="Limpar busca">&times;</button>
         </div>
 
@@ -337,7 +337,7 @@
     <main class="projects-section">
       <!-- Section info & Active filters breadcrumb -->
       <div class="section-hud-bar">
-        <div class="section-title-wrap">
+        <div class="section-title-block">
           <!-- Small Skull SVG Icon -->
           <svg class="section-skull-icon" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 2C8 2 4 6.5 4 12C4 15.8 6 18.8 9 20.5V24H19V20.5C22 18.8 24 15.8 24 12C24 6.5 20 2 14 2Z" stroke="var(--accent-neon)" stroke-width="1.5" fill="rgba(255,0,60,0.07)"/>
@@ -352,17 +352,22 @@
             <line x1="8" y1="6" x2="20" y2="6" stroke="var(--accent-neon)" stroke-width="0.8" opacity="0.5"/>
             <circle cx="14" cy="6" r="1.2" fill="var(--accent-neon)" opacity="0.7"/>
           </svg>
-          <span class="hud-bracket">[</span>
-          <h2 class="section-title">ARSENAL DE SISTEMAS</h2>
-          <span class="hud-bracket">]</span>
-          <span class="results-badge" id="resultsCount">Exibindo 0 projetos</span>
+          <div class="section-title-wrap">
+            <span class="hud-bracket">[</span>
+            <h2 class="section-title">ARSENAL DE SISTEMAS</h2>
+            <span class="hud-bracket">]</span>
+          </div>
         </div>
-        <div class="quick-pinned-toggle">
-          <label class="toggle-checkbox-label">
-            <input type="checkbox" id="chkOnlyPinned">
-            <span class="custom-toggle"></span>
-            <span class="label-text">Somente Marcados</span>
-          </label>
+
+        <div class="section-meta-controls">
+          <span class="results-badge" id="resultsCount">Exibindo 0 projetos</span>
+          <div class="quick-pinned-toggle">
+            <label class="toggle-checkbox-label" for="chkOnlyPinned">
+              <input type="checkbox" id="chkOnlyPinned">
+              <span class="custom-toggle"></span>
+              <span class="label-text">Somente Marcados</span>
+            </label>
+          </div>
         </div>
       </div>
 
